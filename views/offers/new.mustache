@@ -1,0 +1,555 @@
+<div class="container container-main-content scene">
+
+  <div class="row">
+    <header class="scene-header page-header">
+      <h1 class="scene-header-headline">Kraftfahrtversicherung <small>Neues Angebot</small></h1>
+    </header>
+    <form class="form-horizontal" role="form" action="index.html">
+      <div class="scene-agents">
+        <div class="form-group">
+          <label for="agent-original" class="control-label">Bestand</label>
+          <div class="fields">
+            <select id="agent-original" class="form-control">
+              <option>00 Thomas Gosen</option>
+              <option>01 &hellip;</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="agent-current" class="control-label">Abschluss</label>
+          <div class="fields">
+            <select id="agent-current" class="form-control">
+              <option>00 Thomas Gosen</option>
+              <option>01 &hellip;</option>
+            </select>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+
+  {{# offer }}
+    {{> errors }}
+  {{/ offer }}
+
+  <form class="form-horizontal scene-form" role="form" action="{{ partner._links.offers.href }}" method="post">
+
+    <div class="row">
+      <div class="col-md-12">
+
+        <div class="offer-details">
+
+          <ul class="nav nav-tabs scene-contents" role="tablist">
+            <li><a href="#personal" class="kbd" role="tab" data-toggle="tab">Versicherungsnehmer</a></li>
+            <li><a href="#vehicleData" class="kbd" role="tab" data-toggle="tab">Fahrzeugdaten</a></li>
+            <li><a href="#usage" class="kbd" role="tab" data-toggle="tab">Nutzung</a></li>
+            <li><a href="#insuranceCover" class="kbd" role="tab" data-toggle="tab">Versicherungsschutz</a></li>
+          </ul>
+
+          <div>
+            <div id="personal" class="tab-pane">
+
+              <fieldset class="scene-fieldset">
+                {{# errors.personal.dob }}
+                <div class="form-group has-error">
+                {{/ errors.personal.dob }}
+                {{^ errors.personal.dob }}
+                <div class="form-group">
+                {{/ errors.personal.dob }}
+                  <label for="personal.dob" class="control-label">
+                    Geburtsdatum
+                    <a class="control-label-help-link" href="/help/example" data-preview="enabled" data-preview-title="Hilfe" data-preview-selector="div.help-description" data-preview-error-msg="Hilfe nicht abrufbar!" data-preview-window>
+                      <i class="icon-question"></i>
+                    </a>
+                  </label>
+                  <div class="fields form-inline">
+                    <input type="text" id="personal.dob" name="personal.dob" class="form-control" value="{{ offer.personal.dob }}">
+                    {{# errors.personal.dob }}
+                    <span class="help-block">{{ errors.personal.dob.fehlerText }}</span>
+                    {{/ errors.personal.dob }}
+                  </div>
+                </div>
+
+                <div data-selectify="active" data-selectify-target="/jobs/results" class="form-group">
+                  <label for="personal.job-id" class="control-label">Berufs ID</label>
+                  <div class="fields form-inline">
+                    <input type="text" id="personal.job-id" name="personal.job-id" class="form-control">
+                    <span class="help-block">
+                      <a href="/jobs" target="_blank">Zur Berufssuche</a>
+                  </div>
+                </div>
+
+                {{# errors.personal.street }}
+                <div class="form-group has-error">
+                {{/ errors.personal.street }}
+                {{^ errors.personal.street }}
+                <div class="form-group">
+                {{/ errors.personal.street }}
+                  <label for="personal.street" class="control-label">Straße</label>
+                  <div class="fields">
+                    <input type="search" id="personal.street" name="personal.street" class="form-control" value="{{ offer.personal.street }}">
+                    {{# errors.personal.street }}
+                    <span class="help-block">{{ errors.personal.street.fehlerText }}</span>
+                    {{/ errors.personal.street }}
+                  </div>
+                </div>
+
+                {{# errors.personal.postcode }}
+                <div class="form-group has-error">
+                {{/ errors.personal.postcode }}
+                {{^ errors.personal.postcode }}
+                <div class="form-group">
+                {{/ errors.personal.postcode }}
+                  <label for="personal.postcode" class="control-label">Postleitzahl</label>
+                  <div class="fields form-inline">
+                    <input type="text" id="personal.postcode" name="personal.postcode" class="form-control" value="{{ offer.personal.postcode }}">
+                    {{# errors.personal.postcode }}
+                    <span class="help-block">{{ errors.personal.postcode.fehlerText }}</span>
+                    {{/ errors.personal.postcode }}
+                  </div>
+                </div>
+
+                {{# errors.personal.city }}
+                <div class="form-group has-error">
+                {{/ errors.personal.city }}
+                {{^ errors.personal.city }}
+                <div class="form-group">
+                {{/ errors.personal.city }}
+                  <label for="personal.city" class="control-label">Stadt</label>
+                  <div class="fields form-inline">
+                    <input type="text" id="personal.city" name="personal.city" class="form-control" value="{{ offer.personal.city }}">
+                    {{# errors.personal.city }}
+                    <span class="help-block">{{ errors.personal.city.fehlerText }}</span>
+                    {{/ errors.personal.city }}
+                  </div>
+                </div>
+
+                {{# errors.personal.district }}
+                <div class="form-group has-error">
+                {{/ errors.personal.district }}
+                {{^ errors.personal.district }}
+                <div class="form-group">
+                {{/ errors.personal.district }}
+                  <label for="personal.district" class="control-label">Stadtteil</label>
+                  <div class="fields form-inline">
+                    <input type="text" id="personal.district" name="personal.district" class="form-control" value="{{ offer.personal.district }}">
+                    {{# errors.personal.district }}
+                    <span class="help-block">{{ errors.personal.district.fehlerText }}</span>
+                    {{/ errors.personal.district }}
+                  </div>
+                </div>
+              </fieldset>
+            </div>
+
+            <div id="vehicleData" class="tab-pane">
+              <fieldset class="scene-fieldset">
+                {{# errors.vehicleData.vehicleType }}
+                <div class="form-group has-error">
+                {{/ errors.vehicleData.vehicleType }}
+                {{^ errors.vehicleData.vehicleType }}
+                <div class="form-group">
+                {{/ errors.vehicleData.vehicleType }}
+                  <label for="vehicleData.vehicleType" class="control-label">Fahrzeugart</label>
+                  <div class="fields">
+                    <select id="vehicleData.vehicleType" name="vehicleData.vehicleType" class="form-control">
+                      <option>{{ offer.vehicleData.vehicleType }}</option>
+                      <option>…</option>
+                    </select>
+                    {{# errors.vehicleData.vehicleType }}
+                    <span class="help-block">{{ errors.vehicleData.vehicleType.fehlerText }}</span>
+                    {{/ errors.vehicleData.vehicleType }}
+                  </div>
+                </div>
+
+                {{# errors.vehicleData.licensePlate }}
+                <div class="form-group has-error">
+                {{/ errors.vehicleData.licensePlate }}
+                {{^ errors.vehicleData.licensePlate }}
+                <div class="form-group">
+                {{/ errors.vehicleData.licensePlate }}
+                  <label for="vehicleData.licensePlate" class="control-label">Kennzeichen</label>
+                  <div class="fields form-inline">
+                    <input type="text" id="vehicleData.licensePlate" name="vehicleData.licensePlate" class="form-control" value="{{ offer.vehicleData.licensePlate }}">
+                    {{# errors.vehicleData.licensePlate }}
+                    <span class="help-block">{{ errors.vehicleData.licensePlate.fehlerText }}</span>
+                    {{/ errors.vehicleData.licensePlate }}
+                  </div>
+                </div>
+
+                {{# errors.vehicleData.manufacturerNo }}
+                <div class="form-group has-error">
+                {{/ errors.vehicleData.manufacturerNo }}
+                {{^ errors.vehicleData.manufacturerNo }}
+                <div class="form-group">
+                {{/ errors.vehicleData.manufacturerNo }}
+                  <label for="vehicleData.manufacturerNo" class="control-label">Hersteller-Nr.</label>
+                  <div class="fields form-inline">
+                    <div class="input-group">
+                      <input type="search" id="vehicleData.manufacturerNo" name="vehicleData.manufacturerNo" class="form-control" value="{{ offer.vehicleData.manufacturerNo }}">
+                    </div>
+                    {{# errors.vehicleData.manufacturerNo }}
+                    <span class="help-block">{{ errors.vehicleData.manufacturerNo.fehlerText }}</span>
+                    {{/ errors.vehicleData.manufacturerNo }}
+                  </div>
+                </div>
+
+                {{# errors.vehicleData.typeKey }}
+                <div class="form-group has-error">
+                {{/ errors.vehicleData.typeKey }}
+                {{^ errors.vehicleData.typeKey }}
+                <div class="form-group">
+                {{/ errors.vehicleData.typeKey }}
+                  <label for="vehicleData.typeKey" class="control-label">Typschlüssel-Nr. <a class="control-label-help-link" data-toggle="modal" data-target=".modal-help-example" href="#"><i class="icon-question"></i></a></label>
+                  <div class="fields">
+                    <input type="search" id="vehicleData.typeKey" name="vehicleData.typeKey" class="form-control" value="{{ offer.vehicleData.typeKey }}">
+                    {{# errors.vehicleData.typeKey }}
+                    <span class="help-block">{{ errors.vehicleData.typeKey.fehlerText }}</span>
+                    {{/ errors.vehicleData.typeKey }}
+                  </div>
+                </div>
+
+                {{# errors.vehicleData.registrationDate }}
+                <div class="form-group has-error">
+                {{/ errors.vehicleData.registrationDate }}
+                {{^ errors.vehicleData.registrationDate }}
+                <div class="form-group">
+                {{/ errors.vehicleData.registrationDate }}
+                  <label for="vehicleData.registrationDate" class="control-label">Erstzulassung</label>
+                  <div class="fields">
+                    <input type="month" id="vehicleData.registrationDate" class="form-control" value="{{ offer.vehicleData.registrationDate }}">
+                    {{# errors.vehicleData.registrationDate }}
+                    <span class="help-block">{{ errors.vehicleData.registrationDate.fehlerText }}</span>
+                    {{/ errors.vehicleData.registrationDate }}
+                  </div>
+                </div>
+
+                {{# errors.vehicleData.identificationNumber }}
+                <div class="form-group has-error">
+                {{/ errors.vehicleData.identificationNumber }}
+                {{^ errors.vehicleData.identificationNumber }}
+                <div class="form-group">
+                {{/ errors.vehicleData.identificationNumber }}
+                  <label for="vehicleData.identificationNumber" class="control-label">Fahrgestell-Nr.</label>
+                  <div class="fields">
+                    <input type="text" id="vehicleData.identificationNumber" class="form-control" value="{{ offer.vehicleData.identificationNumber }}">
+                    {{# errors.vehicleData.identificationNumber }}
+                    <span class="help-block">{{ errors.vehicleData.identificationNumber.fehlerText }}</span>
+                    {{/ errors.vehicleData.identificationNumber }}
+                  </div>
+                </div>
+              </fieldset>
+
+              <fieldset class="scene-fieldset">
+                <div class="form-group form-group-multiple">
+                  <label for="vehicleData.licensePlateType" class="control-label">KFZ-Kennzeichen-Art</label>
+                  <div class="col-sm-3 form-group-multiple-item">
+                    <select id="vehicleData.licensePlateType" name="vehicleData.licensePlateType" class="form-control">
+                      <option>{{ offer.vehicleData.licensePlateType }}</option>
+                    </select>
+                  </div>
+
+                  <label for="kfz-wechselkennzeichen" class="control-label">Wechselkennzeichen</label>
+                  <div class="col-sm-3 form-group-multiple-item">
+                    <label class="radio-inline">
+                      <input name="vehicleData.changeableLicensePlate" value="false" checked="" type="radio"> nein
+                    </label>
+                    <label class="radio-inline">
+                      <input name="vehicleData.changeableLicensePlate" value="true" type="radio"> ja
+                    </label>
+                  </div>
+                </div>
+
+                <div class="form-group form-group-multiple">
+                  <label for="vehicleData.kilowatt" class="control-label">Leistung (kW)</label>
+                  <div class="col-sm-3 form-group-multiple-item">
+                    <input type="text" id="vehicleData.kilowatt" class="form-control">
+                  </div>
+                  <label for="vehicleData.horsepower" class="control-label">Leistung (PS)</label>
+                  <div class="col-sm-3 form-group-multiple-item">
+                    <input type="text" id="vehicleData.horsepower" name="vehicleData.horsepower" class="form-control" value="{{ offer.vehicleData.horsepower }}">
+                  </div>
+                </div>
+
+                {{# errors.vehicleData.changeableEngine }}
+                <div class="form-group has-error">
+                {{/ errors.vehicleData.changeableEngine }}
+                {{^ errors.vehicleData.changeableEngine }}
+                <div class="form-group">
+                {{/ errors.vehicleData.changeableEngine }}
+                  <label class="control-label">Austauschmotor</label>
+                  <div class="col-sm-3 form-group-multiple-item">
+                    <label class="radio-inline">
+                      <input name="vehicleData.changeableEngine" value="false" checked="" type="radio"> nein
+                    </label>
+                    <label class="radio-inline">
+                      <input name="vehicleData.changeableEngine" value="true" type="radio"> ja
+                    </label>
+                    {{# errors.vehicleData.changeableEngine }}
+                    <span class="help-block">{{ errors.vehicleData.changeableEngine.fehlerText }}</span>
+                    {{/ errors.vehicleData.changeableEngine }}
+                  </div>
+                </div>
+
+              </fieldset>
+            </div>
+
+            <div id="usage" class="tab-pane">
+              <fieldset class="scene-fieldset">
+                {{# errors.usage.anyDriver }}
+                <div class="form-group has-error">
+                {{/ errors.usage.anyDriver }}
+                {{^ errors.usage.anyDriver }}
+                <div class="form-group">
+                {{/ errors.usage.anyDriver }}
+                  <label for="usage.anyDriver" class="control-label">beliebige Fahrer</label>
+                  <div class="fields">
+                    <input type="text" id="usage.anyDriver" name="usage.anyDriver" class="form-control" value="{{ offer.usage.anyDriver }}">
+                    {{# errors.usage.anyDriver }}
+                    <span class="help-block">{{ errors.usage.anyDriver.fehlerText }}</span>
+                    {{/ errors.usage.anyDriver }}
+                  </div>
+                </div>
+
+                {{# errors.usage.differentVehicleOwner }}
+                <div class="form-group has-error">
+                {{/ errors.usage.differentVehicleOwner }}
+                {{^ errors.usage.differentVehicleOwner }}
+                <div class="form-group">
+                {{/ errors.usage.differentVehicleOwner }}
+                  <label for="kfz-abweichenderFahrzeughalter" class="control-label">abweichender Fahrzeughalter</label>
+                  <div class="col-sm-3 form-group-multiple-item">
+                    <label class="radio-inline">
+                      <input name="usage.differentVehicleOwner" value="false" checked="" type="radio"> nein
+                    </label>
+                    <label class="radio-inline">
+                      <input name="usage.differentVehicleOwner" value="true" type="radio"> ja
+                    </label>
+                    {{# errors.usage.differentVehicleOwner }}
+                    <span class="help-block">{{ errors.usage.differentVehicleOwner.fehlerText }}</span>
+                    {{/ errors.usage.differentVehicleOwner }}
+                  </div>
+                </div>
+
+                {{# errors.usage.drivingPerformance }}
+                <div class="form-group has-error">
+                {{/ errors.usage.drivingPerformance }}
+                {{^ errors.usage.drivingPerformance }}
+                <div class="form-group">
+                {{/ errors.usage.drivingPerformance }}
+                  <label for="usage.drivingPerformance" class="control-label">Fahrleistung (jährl./Saison)</label>
+                  <div class="fields">
+                    <input type="text" id="usage.drivingPerformance" name="usage.drivingPerformance" class="form-control" value="{{ offer.usage.drivingPerformance }}">
+                    {{# errors.usage.drivingPerformance }}
+                    <span class="help-block">{{ errors.usage.drivingPerformance.fehlerText }}</span>
+                    {{/ errors.usage.drivingPerformance }}
+                  </div>
+                </div>
+
+                {{# errors.usage.mileage }}
+                <div class="form-group has-error">
+                {{/ errors.usage.mileage }}
+                {{^ errors.usage.mileage }}
+                <div class="form-group">
+                {{/ errors.usage.mileage }}
+                  <label for="usage.mileage" class="control-label">Kilometerstand</label>
+                  <div class="fields">
+                    <input type="text" id="usage.mileage" name="usage.mileage" class="form-control" value="{{ offer.usage.mileage }}">
+                    {{# errors.usage.mileage }}
+                    <span class="help-block">{{ errors.usage.mileage.fehlerText }}</span>
+                    {{/ errors.usage.mileage }}
+                  </div>
+                </div>
+              </fieldset>
+
+              <fieldset class="scene-fieldset">
+                {{# errors.usage.usage }}
+                <div class="form-group has-error">
+                {{/ errors.usage.usage }}
+                {{^ errors.usage.usage }}
+                <div class="form-group">
+                {{/ errors.usage.usage }}
+                  <label for="usage.usage" class="control-label">Fahrzeugnutzung</label>
+                  <div class="fields">
+                    <input type="text" id="usage.usage" name="usage.usage" class="form-control" value="{{ offer.usage.usage }}">
+                    {{# errors.usage.usage }}
+                    <span class="help-block">{{ errors.usage.mileage.fehlerText }}</span>
+                    {{/ errors.usage.usage }}
+                  </div>
+                </div>
+
+                {{# errors.usage.ownerOccupiedHome }}
+                <div class="form-group has-error">
+                {{/ errors.usage.ownerOccupiedHome }}
+                {{^ errors.usage.ownerOccupiedHome }}
+                <div class="form-group">
+                {{/ errors.usage.ownerOccupiedHome }}
+                  <label class="control-label">selbstgen. Wohneigentum</label>
+                  <div class="col-sm-3 form-group-multiple-item">
+                    <label class="radio-inline">
+                      <input name="usage.ownerOccupiedHome" value="false" checked="" type="radio"> nein
+                    </label>
+                    <label class="radio-inline">
+                      <input name="usage.ownerOccupiedHome" value="true" type="radio"> ja
+                    </label>
+                    {{# errors.usage.ownerOccupiedHome }}
+                    <span class="help-block">{{ errors.usage.ownerOccupiedHome.fehlerText }}</span>
+                    {{/ errors.usage.ownerOccupiedHome }}
+                  </div>
+                </div>
+
+                {{# errors.usage.homeOwnershipType }}
+                <div class="form-group has-error">
+                {{/ errors.usage.homeOwnershipType }}
+                {{^ errors.usage.homeOwnershipType }}
+                <div class="form-group">
+                {{/ errors.usage.homeOwnershipType }}
+                  <label for="usage.homeOwnershipType" class="control-label">Wohneigentumsart</label>
+                  <div class="fields">
+                    <input type="text" id="usage.homeOwnershipType" name="usage.homeOwnershipType" class="form-control" value="{{ offer.usage.homeOwnershipType }}">
+                    {{# errors.usage.homeOwnershipType }}
+                    <span class="help-block">{{ errors.usage.homeOwnershipType.fehlerText }}</span>
+                    {{/ errors.usage.homeOwnershipType }}
+                  </div>
+                </div>
+
+                {{# errors.usage.nightlyPound }}
+                <div class="form-group has-error">
+                {{/ errors.usage.nightlyPound }}
+                {{^ errors.usage.nightlyPound }}
+                <div class="form-group">
+                {{/ errors.usage.nightlyPound }}
+                  <label for="usage.nightlyPound" class="control-label">nächtlicher Abstellplatz</label>
+                  <div class="fields">
+                    <input type="text" id="usage.nightlyPound" name="usage.nightlyPound" class="form-control" value="{{ offer.usage.nightlyPound }}">
+                    {{# errors.usage.nightlyPound }}
+                    <span class="help-block">{{ errors.usage.nightlyPound.fehlerText }}</span>
+                    {{/ errors.usage.nightlyPound }}
+                  </div>
+                </div>
+              </fieldset>
+            </div>
+
+            <div id="insuranceCover" class="tab-pane">
+              <fieldset class="scene-fieldset">
+                {{# errors.insuranceCover.basicAgreement }}
+                <div class="form-group has-error">
+                {{/ errors.insuranceCover.basicAgreement }}
+                {{^ errors.insuranceCover.basicAgreement }}
+                <div class="form-group">
+                {{/ errors.insuranceCover.basicAgreement }}
+                  <label for="insuranceCover.basicAgreement" class="control-label">Rahmenvertrag</label>
+                  <div class="fields">
+                    <input type="text" id="insuranceCover.basicAgreement" name="insuranceCover.basicAgreement" class="form-control" value="{{ offer.insuranceCover.basicAgreement }}">
+                    {{# errors.insuranceCover.basicAgreement }}
+                    <span class="help-block">{{ errors.insuranceCover.basicAgreement.fehlerText }}</span>
+                    {{/ errors.insuranceCover.basicAgreement }}
+                  </div>
+                </div>
+
+                {{# errors.insuranceCover.wageGroup }}
+                <div class="form-group has-error">
+                {{/ errors.insuranceCover.wageGroup }}
+                {{^ errors.insuranceCover.wageGroup }}
+                <div class="form-group">
+                {{/ errors.insuranceCover.wageGroup }}
+                  <label for="insuranceCover.wageGroup" class="control-label">Tarifgruppe</label>
+                  <div class="fields">
+                    <input type="text" id="insuranceCover.wageGroup" name="insuranceCover.wageGroup" class="form-control" value="{{ offer.insuranceCover.wageGroup }}">
+                    {{# errors.insuranceCover.wageGroup }}
+                    <span class="help-block">{{ errors.insuranceCover.wageGroup.fehlerText }}</span>
+                    {{/ errors.insuranceCover.wageGroup }}
+                  </div>
+                </div>
+
+                {{# errors.insuranceCover.start }}
+                <div class="form-group has-error">
+                {{/ errors.insuranceCover.start }}
+                {{^ errors.insuranceCover.start }}
+                <div class="form-group">
+                {{/ errors.insuranceCover.start }}
+                  <label for="insuranceCover.start" class="control-label">Versicherungsbeginn</label>
+                  <div class="fields">
+                    <input type="text" id="insuranceCover.start" name="insuranceCover.start" class="form-control" value="{{ offer.insuranceCover.start }}">
+                    {{# errors.insuranceCover.start }}
+                    <span class="help-block">{{ errors.insuranceCover.start.fehlerText }}</span>
+                    {{/ errors.insuranceCover.start }}
+                  </div>
+                </div>
+
+                {{# errors.insuranceCover.paymentMethod }}
+                <div class="form-group has-error">
+                {{/ errors.insuranceCover.paymentMethod }}
+                {{^ errors.insuranceCover.paymentMethod }}
+                <div class="form-group">
+                {{/ errors.insuranceCover.paymentMethod }}
+                  <label for="insuranceCover.paymentMethod" class="control-label">Zahlungsweise</label>
+                  <div class="fields">
+                    <select id="insuranceCover.paymentMethod" name="insuranceCover.paymentMethod" class="form-control">
+                      {{# offer.insuranceCover.availablePaymentMethods }}
+                        <option id="{{ id }}" value="{{ name }}">{{ name }}</option>
+                      {{/ offer.insuranceCover.availablePaymentMethods }}
+                    </select>
+                    {{# errors.insuranceCover.paymentMethod }}
+                    <span class="help-block">{{ errors.insuranceCover.paymentMethod.fehlerText }}</span>
+                    {{/ errors.insuranceCover.paymentMethod }}
+                  </div>
+                </div>
+              </fieldset>
+
+              <fieldset class="scene-fieldset">
+                {{# errors.insuranceCover.liabilityDiscount }}
+                <div class="form-group has-error">
+                {{/ errors.insuranceCover.liabilityDiscount }}
+                {{^ errors.insuranceCover.liabilityDiscount }}
+                <div class="form-group">
+                {{/ errors.insuranceCover.liabilityDiscount }}
+                  <label for="insuranceCover.liabilityDiscount" class="control-label">Haftpflicht Schadensfreiheitrabatt</label>
+                  <div class="fields">
+                    <input type="text" id="insuranceCover.liabilityDiscount" name="insuranceCover.liabilityDiscount" class="form-control" value="{{ offer.insuranceCover.liabilityDiscount }}">
+                    {{# errors.insuranceCover.liabilityDiscount }}
+                    <span class="help-block">{{ errors.insuranceCover.liabilityDiscount.fehlerText }}</span>
+                    {{/ errors.insuranceCover.liabilityDiscount }}
+                  </div>
+                </div>
+
+                {{# errors.insuranceCover.comprehensiveCoverDiscount }}
+                <div class="form-group has-error">
+                {{/ errors.insuranceCover.comprehensiveCoverDiscount }}
+                {{^ errors.insuranceCover.comprehensiveCoverDiscount }}
+                <div class="form-group">
+                {{/ errors.insuranceCover.comprehensiveCoverDiscount }}
+                  <label for="insuranceCover.comprehensiveCoverDiscount" class="control-label">Vollkasko-Schadensfreiheitrabatt</label>
+                  <div class="fields">
+                    <input type="text" id="insuranceCover.comprehensiveCoverDiscount" name="insuranceCover.comprehensiveCoverDiscount" class="form-control" value="{{ offer.insuranceCover.comprehensiveCoverDiscount }}">
+                    {{# errors.insuranceCover.comprehensiveCoverDiscount }}
+                    <span class="help-block">{{ errors.insuranceCover.comprehensiveCoverDiscount.fehlerText }}</span>
+                    {{/ errors.insuranceCover.comprehensiveCoverDiscount }}
+                  </div>
+                </div>
+              </fieldset>
+
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+
+      <hr>
+
+      <div class="row">
+        <div class="col-md-12">
+          <div class="btn-group">
+            <input type="submit" class="btn btn-primary" value="Speichern">
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-12">
+          {{> scene_summary }}
+        </div>
+      </div>
+
+  </form>
+  </div>

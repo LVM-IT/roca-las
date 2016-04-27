@@ -1,0 +1,16 @@
+{{# errors.length }}
+<div class="alert alert-danger fade in" role="alert">
+  Es sind {{ errors.length }} Fehler aufgetreten:
+
+  <ul>
+    {{# errors }}
+    <li>
+      <a href="#{{ bezugsFeld }}" class="alert-link">
+        <i class="glyphicon glyphicon-arrow-right"></i>
+        {{ bezugsFeld }}
+      </a>: {{ fehlerText }}
+    </li>
+    {{/ errors }}
+  </ul>
+</div>
+{{/ errors.length }}

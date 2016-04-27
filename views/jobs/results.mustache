@@ -1,0 +1,17 @@
+<div class="container container-main-content scene">
+  <div class="row">
+    <header class="page-header">
+      <h1 class="scene-header-headline">Berufsuche <small>Ergebnisse</small></h1>
+    </header>
+  </div>
+
+  <div class="row">
+    <dl class="dl-horizontal">
+      {{# results }}
+        <dt>{{ name }}</dt>
+        <dd>{{ berufId }}</dd>
+      {{/ results }}
+    </dl>
+  </div>
+
+</div>

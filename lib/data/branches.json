@@ -1,0 +1,11 @@
+[
+  { "label": "Fonds", "classname": "fonds" },
+  { "label": "Finanzen", "classname": "finanzen" },
+  { "label": "Leben", "classname": "leben" },
+  { "label": "Kranken", "classname": "kranken" },
+  { "label": "Unfall", "classname": "unfall" },
+  { "label": "Haftpflicht", "classname": "haftpflicht" },
+  { "label": "Sach", "classname": "sach" },
+  { "label": "Recht", "classname": "recht" },
+  { "label": "Kraftfahrt", "classname": "kfz", "icon": "icon-car-2-filled" }
+]

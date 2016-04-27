@@ -1,0 +1,63 @@
+<div class="container container-main-content scene">
+  <div class="row">
+    <header class="scene-header page-header">
+      <h1 class="scene-header-headline">Person {{ person.firstName }} {{ person.name }}<small>Vertrag {{ contract.id }}</small></h1>
+      <small>
+        letzte Änderung: <time datetime="2014-07-15 09:36">vor 3 Tagen</time>
+        (<a href="#" class="h-card">01 Gosen</a>)
+      </small>
+    </header>
+    <form class="form-horizontal" role="form" action="index.html" method="get">
+      <div class="scene-agents">
+        <div class="form-group">
+          <label for="agent-original" class="control-label">Bestand</label>
+          <div class="fields">
+            <select id="agent-original" class="form-control">
+              <option>00 Thomas Gosen</option>
+              <option>01 &hellip;</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="agent-current" class="control-label">Abschluss</label>
+          <div class="fields">
+            <select id="agent-current" class="form-control">
+              <option>00 Thomas Gosen</option>
+              <option>01 &hellip;</option>
+            </select>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+
+  <div class="row">
+    <div class="col-md-12">
+
+      <div class="person-details">
+
+        <div id="kfz-fahrzeugdaten" class="tab-pane">
+
+          <form class="form-horizontal scene-form" role="form">
+            <fieldset class="scene-fieldset">
+              <div class="form-group">
+                <label for="person-name" class="control-label">Name</label>
+                <div class="fields">
+                  <input type="text" id="person-name" class="form-control" value="{{ person.firstName }} {{ person.name }}">
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="person-dob" class="control-label">Geburtsdatum</label>
+                <div class="fields">
+                  <input type="text" id="person-dob" class="form-control" value="{{ person.dob }}">
+                </div>
+              </div>
+            </fieldset>
+          </form>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,37 @@
+<div class="container">
+  <header class="onebox-heading">
+    <h1>Kundenauswahl</h1>
+  </header>
+
+  <form action="result" class="onebox" role="form">
+    <div class="form-group onebox-searchgroup">
+      <label class="sr-only" for="onebox-search">Suche</label>
+      <input type="search" id="onebox-search" name="query"
+              data-complete="auto"
+              data-complete-results="onebox-results"
+              data-complete-min-length="3"
+              class="onebox-search"
+              placeholder="nach Kundendaten suchen, z.B. &quot;Rich&quot;" autofocus>
+    </div>
+    <div class="btn-group onebox-settings">
+      <button type="submit" class="btn btn-lg btn-default">Suchen</button>
+        <button type="button" class="btn btn-link btn-lg dropdown-toggle onebox-settings-btn" data-toggle="dropdown">
+            <i class="onebox-settings-btn-cog-icon"></i> <i class="onebox-settings-btn-dropdown-icon"></i>
+        </button>
+        <ul class="dropdown-menu" role="menu">
+          <li>
+            <a href="#">
+              <label for="phonetic">phonetische Suche</label>
+              <input id="phonetic" type="checkbox">
+            </a>
+          </li>
+          <li>
+            <a class="settings-selector" href="#">
+              <label for="whole-words">ganze Wörter</label><input id="whole-words" type="checkbox">
+            </a>
+          </li>
+        </ul>
+    </div>
+  </form>
+
+</div>

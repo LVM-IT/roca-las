@@ -1,0 +1,32 @@
+<div class="container">
+  <header class="page-header">
+    <h1>Suchergebnisse <small>für '{{ query }}'</small></h1>
+  </header>
+
+  <ul class="onebox-results">
+    {{#results}}
+      <li class="list-group-item selected">
+        <a href="{{ url }}">
+            <h3>
+                <span class="p-honorific-prefix">{{ honorific }}</span>
+                <span class="p-name">{{ firstname }} {{ name }}</span>
+                <!-- TODO: add branch indicators -->
+            </h3>
+            <p>
+                <span class="p-post-code">{{ address }}</span>
+            </p>
+            <p>
+              {{ #age }}
+                {{ age }} Jahre
+              {{ /age }}
+
+              {{ #dob }}
+                , geb. am <span class="dt-bday">{{ dob }}</span>
+              {{ /dob }}
+            </p>
+        </a>
+      </li>
+    {{/results}}
+  </ul>
+
+</div>

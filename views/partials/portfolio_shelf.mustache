@@ -1,0 +1,30 @@
+<ul class="customer-card-portfolio">
+  <li class="customer-card-portfolio-item">
+    <a href="{{ partner._links.offers.href }}" class="customer-card-portfolio-item-link preview" data-preview="enabled" data-preview-title="Angebote" data-preview-selector="table.portfolio-overview" data-preview-error-msg="Angebote nicht abrufbar!" data-preview-window>
+      Angebote <span class="customer-card-portfolio-item-quantity"></span>
+    </a>
+  </li>
+  <li class="customer-card-portfolio-item">
+    <a href="{{ partner._links.proposals.href }}" class="customer-card-portfolio-item-link preview" data-preview="enabled" data-preview-title="Anträge" data-preview-selector="table.portfolio-overview" data-preview-error-msg="Anträge nicht abrufbar!" data-preview-window>
+      Anträge <span class="customer-card-portfolio-item-quantity"></span>
+    </a>
+  </li>
+  <li class="customer-card-portfolio-item">
+    <a href="{{ partner._links.contracts.href }}" class="customer-card-portfolio-item-link preview" data-preview="enabled" data-preview-title="Verträge" data-preview-selector="table.portfolio-overview" data-preview-error-msg="Verträge nicht abrufbar!" data-preview-window>
+      Verträge <span class="customer-card-portfolio-item-quantity"></span>
+    </a>
+  </li>
+  <li class="customer-card-portfolio-item">
+    <a href="#" class="customer-card-portfolio-item-link collection-preview"
+                data-popover-content="#portfolio-item-popover-claims">
+      Schäden <span class="customer-card-portfolio-item-quantity"></span>
+    </a>
+  </li>
+</ul>
+
+<div class="collection-excerpt" id="portfolio-item-popover-claims">
+  <h3 class="collection-excerpt-title">
+    Schnellansicht
+    <a href="#" class="collection-link">Alle anzeigen</a></h3>
+  <p>N/A</p>
+</div>

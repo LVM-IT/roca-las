@@ -1,0 +1,339 @@
+<div class="container container-main-content scene">
+  {{# success }}
+  <div class="alert alert-success fade in" role="alert">
+    Der Schaden wurde erfolgreich gemeldet
+  </div>
+  {{/ success }}
+
+  <div class="row">
+    <header class="scene-header page-header">
+      <h1 class="scene-header-headline">{{ contract.branch }} <small>Vertrag {{ contract.id }}</small></h1>
+      <small>
+        letzte Änderung: <time datetime="2014-07-15 09:36">vor 3 Tagen</time>
+        (<a href="#" class="h-card">01 Gosen</a>)
+      </small>
+    </header>
+    <form class="form-horizontal" role="form" action="index.html" method="get">
+      <div class="scene-agents">
+        <div class="form-group">
+          <label for="agent-original" class="control-label">Bestand</label>
+          <div class="fields">
+            <select id="agent-original" class="form-control">
+              <option>00 Thomas Gosen</option>
+              <option>01 &hellip;</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="agent-current" class="control-label">Abschluss</label>
+          <div class="fields">
+            <select id="agent-current" class="form-control">
+              <option>00 Thomas Gosen</option>
+              <option>01 &hellip;</option>
+            </select>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+
+  <div class="row">
+    <div class="col-md-12">
+
+      <div class="contract-details">
+
+        <ul class="nav nav-tabs scene-contents" role="tablist">
+          <li><a href="#kfz-fahrzeugdaten" class="kbd" role="tab" data-toggle="tab">Fahrzeugdaten</a></li>
+          <li><a href="#kfz-nutzung" class="kbd" role="tab" data-toggle="tab">Nutzung</a></li>
+          <li><a href="#kfz-versSchutz" class="kbd" role="tab" data-toggle="tab">Versicherungsschutz</a></li>
+        </ul>
+
+        <div>
+          <div id="kfz-fahrzeugdaten" class="tab-pane">
+
+            <form class="form-horizontal scene-form" role="form">
+              <fieldset class="scene-fieldset">
+                <div class="form-group">
+                  <label for="kfz-fahrzeugart" class="control-label">Fahrzeugart</label>
+                  <div class="fields">
+                    <input type="text" id="kfz-fahrzeugart" class="form-control" value="{{ contract.fahrzeugdaten.fahrzeugart }}" disabled>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="kfz-kennzeichen" class="control-label">Kennzeichen</label>
+                  <div class="fields form-inline">
+                    <input type="text" id="kfz-kennzeichen" class="form-control" value="{{ contract.fahrzeugdaten.kennzeichen }}" disabled>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="kfz-plz" class="control-label"><abbr title="Postleitzahl">PLZ</abbr> / Ort</label>
+                  <div class="fields">
+                    <input type="text" id="kfz-plz" class="form-control" disabled>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="kfz-herstellernr" class="control-label">Hersteller-Nr.</label>
+                  <div class="fields form-inline">
+                    <div class="input-group">
+                      <input type="search" id="kfz-herstellernr" class="form-control" value="{{ contract.fahrzeugdaten.hsn }}" disabled>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="kfz-typschluesselnr" class="control-label">Typschlüssel-Nr. <a class="control-label-help-link" data-toggle="modal" data-target=".modal-help-example" href="#"><i class="icon-question"></i></a></label>
+                  <div class="fields">
+                    <input type="search" id="kfz-typschluesselnr" class="form-control" value="{{ contract.fahrzeugdaten.typschl }}" disabled>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="kfz-erstzulassung" class="control-label">Erstzulassung</label>
+                  <div class="fields">
+                    <input type="month" id="kfz-erstzulassung" class="form-control" value="{{ contract.fahrzeugdaten.erstzulassung }}" disabled>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="kfz-erwerb" class="control-label">Erwerb <abbr>VN</abbr> / <abbr>FH</abbr></label>
+                  <div class="fields">
+                    <input type="month" id="kfz-erwerb" class="form-control" disabled>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="kfz-fahrgestell" class="control-label">Fahrgestell-Nr.</label>
+                  <div class="fields">
+                    <input type="text" id="kfz-fahrgestell" class="form-control" value="{{ contract.fahrzeugdaten.fahrgestell }}" disabled>
+                  </div>
+                </div>
+              </fieldset>
+
+              <fieldset class="scene-fieldset">
+                <div class="form-group form-group-multiple">
+                  <label for="kfz-saison-von" class="control-label">Saison von</label>
+                  <div class="col-sm-3 form-group-multiple-item">
+                    <input type="month" id="kfz-saison-von" class="form-control" disabled>
+                  </div>
+                  <label for="kfz-saison-bis" class="control-label">Saison bis</label>
+                  <div class="col-sm-3 form-group-multiple-item">
+                    <input type="month" id="kfz-saison-bis" class="form-control" disabled>
+                  </div>
+                </div>
+
+                <div class="form-group form-group-multiple">
+                  <label for="kfz-kennzeichen-art" class="control-label">KFZ-Kennzeichen-Art</label>
+                  <div class="col-sm-3 form-group-multiple-item">
+                    <input type="text" id="kfz-kennzeichen-art" class="form-control" value="{{ contract.fahrzeugdaten.kennzeichenart }}" disabled>
+                  </div>
+
+                  <label for="kfz-wechselkennzeichen" class="control-label">Wechselkennzeichen</label>
+                  <div class="col-sm-3 form-group-multiple-item">
+                    <input type="text" id="kfz-wechselkennzeichen" class="form-control" value="{{ contract.fahrzeugdaten.wechselkennzeichen }}" disabled>
+                  </div>
+                </div>
+
+                <div class="form-group form-group-multiple">
+                  <label for="kfz-leistung-kw" class="control-label">Leistung (kW)</label>
+                  <div class="col-sm-3 form-group-multiple-item">
+                    <input type="text" id="kfz-leistung-kw" class="form-control" disabled>
+                  </div>
+                  <label for="kfz-leistung-ps" class="control-label">Leistung (PS)</label>
+                  <div class="col-sm-3 form-group-multiple-item">
+                    <input type="text" id="kfz-leistung-ps" class="form-control" value="{{ contract.fahrzeugdaten.fahrzeugstaerkePS }}" disabled>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="kfz-austauschmotor" class="control-label">Austauschmotor</label>
+                  <div class="col-sm-3 form-group-multiple-item">
+                    <input type="text" id="kfz-austauschmotor" class="form-control" value="{{ contract.fahrzeugdaten.austauschmotor }}" disabled>
+                  </div>
+                </div>
+
+              </fieldset>
+            </form>
+          </div>
+
+          <div id="kfz-nutzung" class="tab-pane">
+            <form class="form-horizontal scene-form" role="form">
+              <fieldset class="scene-fieldset">
+                <div class="form-group">
+                  <label for="kfz-beliebigeFahrer" class="control-label">beliebige Fahrer</label>
+                  <div class="fields">
+                    <input type="text" id="kfz-beliebigeFahrer" class="form-control" value="{{ contract.nutzung.beliebigeFahrer }}" disabled>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="kfz-abweichenderFahrzeughalter" class="control-label">abweichender Fahrzeughalter</label>
+                  <div class="fields">
+                    <input type="text" id="kfz-abweichenderFahrzeughalter" class="form-control" value="{{ contract.nutzung.abweichenderFahrzeughalter }}" disabled>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="kfz-fahrleistungKm" class="control-label">Fahrleistung (jährl./Saison)</label>
+                  <div class="fields">
+                    <input type="text" id="kfz-fahrleistungKm" class="form-control" value="{{ contract.nutzung.fahrleistungKm }}" disabled>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="kfz-kilometerstand" class="control-label">Kilometerstand</label>
+                  <div class="fields">
+                    <input type="text" id="kfz-kilometerstand" class="form-control" value="{{ contract.nutzung.kilometerstand }}" disabled>
+                  </div>
+                </div>
+
+              </fieldset>
+
+              <fieldset class="scene-fieldset">
+                <div class="form-group">
+                  <label for="kfz-nutzung" class="control-label">Fahrzeugnutzung</label>
+                  <div class="fields">
+                    <input type="text" id="kfz-nutzung" class="form-control" value="{{ contract.nutzung.nutzung }}" disabled>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="kfz-selbstGenEigentum" class="control-label">selbstgen. Wohneigentum</label>
+                  <div class="fields">
+                    <input type="text" id="kfz-selbstGenEigentum" class="form-control" value="{{ contract.nutzung.selbstGenEigentum }}" disabled>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="kfz-wohneigentumart" class="control-label">Wohneigentumsart</label>
+                  <div class="fields">
+                    <input type="text" id="kfz-wohneigentumart" class="form-control" value="{{ contract.nutzung.wohneigentumart }}" disabled>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="kfz-nachtAbstellplatz" class="control-label">nächtlicher Abstellplatz</label>
+                  <div class="fields">
+                    <input type="text" id="kfz-nachtAbstellplatz" class="form-control" value="{{ contract.nutzung.nachtAbstellplatz }}" disabled>
+                  </div>
+                </div>
+              </fieldset>
+
+              {{# contract.nutzung.people.length }}
+              <h3>Versicherte Personen ({{ contract.nutzung.people.length }})</h3>
+              <div class="table-responsive">
+                <table class="people-overview table">
+                  <thead>
+                    <tr>
+                      <th class="sort" data-sort="col-people-id">#</th>
+                      <th class="sort" data-sort="col-people-name">Name</th>
+                      <th class="sort" data-sort="col-people-dob">Geburtsdatum</th>
+                      <th>Aktion</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {{# contract.nutzung.people }}
+                    <tr>
+                      <td class="col-people-id">
+                        {{ id }}
+                      </td>
+                      <td class="col-people-name">
+                        {{ firstName }} {{ name }}
+                      </td>
+                      <td class="col-people-dob">
+                        {{ dob }}
+                      </td>
+                      <td>
+                        <a href="{{ personEditUri }}" class="btn btn-default btn-xs" data-pjax="active">Öffnen</a>
+                      </td>
+                    </tr>
+                    {{/ contract.nutzung.people }}
+                  </tbody>
+                </table>
+              </div>
+              {{/ contract.nutzung.people.length }}
+
+              <button type="button" class="btn btn-default">
+                Person hinzufügen
+              </button>
+            </form>
+          </div>
+
+          <div id="kfz-versSchutz" class="tab-pane">
+            <form class="form-horizontal scene-form" role="form">
+              <fieldset class="scene-fieldset">
+                <div class="form-group">
+                  <label for="kfz-rahmenvertrag" class="control-label">Rahmenvertrag</label>
+                  <div class="fields">
+                    <input type="text" id="kfz-rahmenvertrag" class="form-control" value="{{ contract.versSchutz.rahmenvertrag }}" disabled>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="kfz-tarifgruppe" class="control-label">Tarifgruppe</label>
+                  <div class="fields">
+                    <input type="text" id="kfz-tarifgruppe" class="form-control" value="{{ contract.versSchutz.tarifgruppe }}" disabled>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="kfz-versBeginn" class="control-label">Versicherungsbeginn</label>
+                  <div class="fields">
+                    <input type="text" id="kfz-versBeginn" class="form-control" value="{{ contract.versSchutz.versBeginn }}" disabled>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="kfz-zahlungsweise" class="control-label">Zahlungsweise</label>
+                  <div class="fields">
+                    <input type="text" id="kfz-zahlungsweise" class="form-control" value="{{ contract.versSchutz.zahlungsweise }}" disabled>
+                  </div>
+                </div>
+              </fieldset>
+
+              <fieldset class="scene-fieldset">
+                <div class="form-group">
+                  <label for="kfz-harfpflichtSFR" class="control-label">Haftpflicht Schadensfreiheitrabatt</label>
+                  <div class="fields">
+                    <input type="text" id="kfz-harfpflichtSFR" class="form-control" value="{{ contract.versSchutz.haftpflichSFR }}" disabled>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="kfz-volkaskoSFR" class="control-label">Vollkasko-Schadensfreiheitrabatt</label>
+                  <div class="fields">
+                    <input type="text" id="kfz-volkaskoSFR" class="form-control" value="{{ contract.versSchutz.volkaskoSFR }}" disabled>
+                  </div>
+              </fieldset>
+            </form>
+
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <hr>
+
+  <div class="row">
+    <div class="col-md-12">
+      <div class="btn-group">
+        <a href="{{ letter_url }}/template?contractId={{ contractId }}&partnerId={{ partnerId }}" class="btn btn-default">Brief schreiben</a>
+      </div>
+
+      <div class="btn-group">
+        <a href="{{ damage_url }}/damage/new?branch=kraftfahrt&contractId={{ contractId }}&partnerId={{ partnerId }}" class="btn btn-default">Schaden melden</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-12">
+      {{> scene_summary }}
+    </div>
+  </div>
+
+</div>

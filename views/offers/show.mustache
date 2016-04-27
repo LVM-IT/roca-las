@@ -1,0 +1,275 @@
+<div class="container container-main-content scene">
+
+  <div class="row">
+    <header class="scene-header page-header">
+      <h1 class="scene-header-headline">{{ offer.branch }} <small>Angebot {{ offer.id }}</small></h1>
+      <small>
+        letzte Änderung: <time datetime="2014-07-15 09:36">vor 3 Tagen</time>
+        (<a href="#" class="h-card">01 Gosen</a>)
+      </small>
+    </header>
+    <form class="form-horizontal" role="form" action="index.html" method="get">
+      <div class="scene-agents">
+        <div class="form-group">
+          <label for="agent-original" class="control-label">Bestand</label>
+          <div class="fields">
+            <select id="agent-original" class="form-control">
+              <option>00 Thomas Gosen</option>
+              <option>01 &hellip;</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="agent-current" class="control-label">Abschluss</label>
+          <div class="fields">
+            <select id="agent-current" class="form-control">
+              <option>00 Thomas Gosen</option>
+              <option>01 &hellip;</option>
+            </select>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+
+  <div class="form-horizontal scene-form">
+
+    <div class="row">
+      <div class="col-md-12">
+
+        <div class="offer-details">
+
+          <ul class="nav nav-tabs scene-contents" role="tablist">
+            <li><a href="#vehicleData" class="kbd" role="tab" data-toggle="tab">Fahrzeugdaten</a></li>
+            <li><a href="#usage" class="kbd" role="tab" data-toggle="tab">Nutzung</a></li>
+            <li><a href="#insuranceCover" class="kbd" role="tab" data-toggle="tab">Versicherungsschutz</a></li>
+          </ul>
+
+          <div>
+            <div id="vehicleData" class="tab-pane">
+
+              <fieldset class="scene-fieldset">
+                <div class="form-group">
+                  <label for="vehicleData.vehicleType" class="control-label">Fahrzeugart</label>
+                  <div class="fields">
+                    <input type="text" id="vehicleData.vehicleType" class="form-control" value="{{ offer.vehicleData.vehicleType }}" disabled>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="vehicleData.licensePlate" class="control-label">Kennzeichen</label>
+                  <div class="fields form-inline">
+                    <input type="text" id="vehicleData.licensePlate" name="vehicleData.licensePlate" class="form-control" value="{{ offer.vehicleData.licensePlate }}" disabled>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="vehicleData.manufacturerNo" class="control-label">Hersteller-Nr.</label>
+                  <div class="fields form-inline">
+                    <div class="input-group">
+                      <input type="text" id="vehicleData.manufacturerNo" name="vehicleData.manufacturerNo" class="form-control" value="{{ offer.vehicleData.manufacturerNo }}" disabled>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="vehicleData.typeKey" class="control-label">Typschlüssel-Nr. <a class="control-label-help-link" data-toggle="modal" data-target=".modal-help-example" href="#"><i class="icon-question"></i></a></label>
+                  <div class="fields">
+                    <input type="text" id="vehicleData.typeKey" name="vehicleData.typeKey" class="form-control" value="{{ offer.vehicleData.typeKey }}" disabled>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="vehicleData.registrationDate" class="control-label">Erstzulassung</label>
+                  <div class="fields">
+                    <input type="text" id="vehicleData.registrationDate" class="form-control" value="{{ offer.vehicleData.registrationDate }}" disabled>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="vehicleData.identificationNumber" class="control-label">Fahrgestell-Nr.</label>
+                  <div class="fields">
+                    <input type="text" id="vehicleData.identificationNumber" class="form-control" value="{{ offer.vehicleData.identificationNumber }}" disabled>
+                  </div>
+                </div>
+              </fieldset>
+
+              <fieldset class="scene-fieldset">
+                <div class="form-group form-group-multiple">
+                  <label for="vehicleData.licensePlateType" class="control-label">KFZ-Kennzeichen-Art</label>
+                  <div class="col-sm-3 form-group-multiple-item">
+                    <input type="text" id="vehicleData.licensePlateType" class="form-control" value="{{ offer.vehicleData.licensePlateType }}" disabled>
+                  </div>
+
+                  <label for="changeableLicensePlate" class="control-label">Wechselkennzeichen</label>
+                  <div class="col-sm-3 form-group-multiple-item">
+                    <input type="text" id="changeableLicensePlate" class="form-control" value="{{ offer.vehicleData.changeableLicensePlate }}" disabled>
+                  </div>
+                </div>
+
+                <div class="form-group form-group-multiple">
+                  <label for="vehicleData.kilowatt" class="control-label">Leistung (kW)</label>
+                  <div class="col-sm-3 form-group-multiple-item">
+                    <input type="text" id="vehicleData.kilowatt" class="form-control" disabled>
+                  </div>
+                  <label for="vehicleData.horsepower" class="control-label">Leistung (PS)</label>
+                  <div class="col-sm-3 form-group-multiple-item">
+                    <input type="text" id="vehicleData.horsepower" name="vehicleData.horsepower" class="form-control" value="{{ offer.vehicleData.horsepower }}" disabled>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label class="control-label" for="changeableEngine">Austauschmotor</label>
+                  <div class="col-sm-3 form-group-multiple-item">
+                    <input type="text" id="changeableEngine" class="form-control" value="{{ offer.vehicleData.changeableEngine }}" disabled>
+                  </div>
+                </div>
+
+              </fieldset>
+            </div>
+
+            <div id="usage" class="tab-pane">
+              <fieldset class="scene-fieldset">
+                <div class="form-group">
+                  <label for="usage.anyDriver" class="control-label">beliebige Fahrer</label>
+                  <div class="fields">
+                    <input type="text" id="usage.anyDriver" name="usage.anyDriver" class="form-control" value="{{ offer.usage.anyDriver }}" disabled>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="usage.differentVehicleOwner" class="control-label">abweichender Fahrzeughalter</label>
+                  <div class="fields">
+                    <input type="text" id="usage.differentVehicleOwner" name="usage.anyDriver" class="form-control" value="{{ offer.usage.differentVehicleOwner }}" disabled>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="usage.drivingPerformance" class="control-label">Fahrleistung (jährl./Saison)</label>
+                  <div class="fields">
+                    <input type="text" id="usage.drivingPerformance" name="usage.drivingPerformance" class="form-control" value="{{ offer.usage.drivingPerformance }}" disabled>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="usage.mileage" class="control-label">Kilometerstand</label>
+                  <div class="fields">
+                    <input type="text" id="usage.mileage" name="usage.mileage" class="form-control" value="{{ offer.usage.mileage }}" disabled>
+                  </div>
+                </div>
+              </fieldset>
+
+              <fieldset class="scene-fieldset">
+                <div class="form-group">
+                  <label for="usage.usage" class="control-label">Fahrzeugnutzung</label>
+                  <div class="fields">
+                    <input type="text" id="usage.usage" name="usage.usage" class="form-control" value="{{ offer.usage.usage }}" disabled>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label class="control-label" for="usage.ownerOccupiedHome">selbstgen. Wohneigentum</label>
+                  <div class="fields">
+                    <input type="text" id="usage.homeOwnershipType" name="usage.homeOwnershipType" class="form-control" value="{{ offer.usage.ownerOccupiedHome }}" disabled>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="usage.homeOwnershipType" class="control-label">Wohneigentumsart</label>
+                  <div class="fields">
+                    <input type="text" id="usage.homeOwnershipType" name="usage.homeOwnershipType" class="form-control" value="{{ offer.usage.homeOwnershipType }}" disabled>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="usage.nightlyPound" class="control-label">nächtlicher Abstellplatz</label>
+                  <div class="fields">
+                    <input type="text" id="usage.nightlyPound" name="usage.nightlyPound" class="form-control" value="{{ offer.usage.nightlyPound }}" disabled>
+                  </div>
+                </div>
+              </fieldset>
+            </div>
+
+            <div id="insuranceCover" class="tab-pane">
+              <fieldset class="scene-fieldset">
+                <div class="form-group">
+                  <label for="insuranceCover.basicAgreement" class="control-label">Rahmenvertrag</label>
+                  <div class="fields">
+                    <input type="text" id="insuranceCover.basicAgreement" name="insuranceCover.basicAgreement" class="form-control" value="{{ offer.insuranceCover.basicAgreement }}" disabled>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="insuranceCover.wageGroup" class="control-label">Tarifgruppe</label>
+                  <div class="fields">
+                    <input type="text" id="insuranceCover.wageGroup" name="insuranceCover.wageGroup" class="form-control" value="{{ offer.insuranceCover.wageGroup }}" disabled>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="insuranceCover.start" class="control-label">Versicherungsbeginn</label>
+                  <div class="fields">
+                    <input type="text" id="insuranceCover.start" name="insuranceCover.start" class="form-control" value="{{ offer.insuranceCover.start }}" disabled>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="insuranceCover.paymentMethod" class="control-label">Zahlungsweise</label>
+                  <div class="fields">
+                    <input type="text" id="insuranceCover.paymentMethod" name="insuranceCover.paymentMethod" class="form-control" value="{{ offer.insuranceCover.paymentMethod }}" disabled>
+                  </div>
+                </div>
+              </fieldset>
+
+              <fieldset class="scene-fieldset">
+                <div class="form-group">
+                  <label for="insuranceCover.liabilityDiscount" class="control-label">Haftpflicht Schadensfreiheitrabatt</label>
+                  <div class="fields">
+                    <input type="text" id="insuranceCover.liabilityDiscount" name="insuranceCover.liabilityDiscount" class="form-control" value="{{ offer.insuranceCover.liabilityDiscount }}" disabled>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="insuranceCover.comprehensiveCoverDiscount" class="control-label">Vollkasko-Schadensfreiheitrabatt</label>
+                  <div class="fields">
+                    <input type="text" id="insuranceCover.comprehensiveCoverDiscount" name="insuranceCover.comprehensiveCoverDiscount" class="form-control" value="{{ offer.insuranceCover.comprehensiveCoverDiscount }}" disabled>
+                  </div>
+              </fieldset>
+
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <hr>
+
+    <div class="row">
+      <div class="col-md-12">
+        <div class="btn-group">
+          <a href="{{ offer.offerEditUri }}" class="btn btn-default">
+            Angebot bearbeiten
+          </a>
+        </div>
+
+        <div class="btn-group">
+          <form action="{{ offer.offerCopyUri}}" method="post">
+            <input type="submit" class="btn btn-default" value="Als Kopie bearbeiten" />
+          </form>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-12">
+        {{> scene_summary }}
+      </div>
+    </div>
+
+  </div>
+
+</div>
