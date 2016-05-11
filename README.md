@@ -1,28 +1,41 @@
-# LVM LAS ROCA
+# RoCA LAS ROCA
 
-Run with:
+## Prerequisites
+```
+node.js >= 4.0
+```
+
+## Run with:
 
 ```
-vagrant up
-vagrant ssh
-cd /vagrant
+npm install
 npm run compile
 npm run server
 ```
 
-Now you can visit http://localhost:8080 to see the application.
+You can visit http://localhost:9400 to see the application.
 
-During development you can run `vagrant rsync-auto` to copy all changes you make to
-the code into the box.
+### general documentation
 
-## JavaScript
+This repository was created as part of the evaluation project "single page application (SPA) and rest oriented client architecture (RoCA)". [More information] (http://lvm-it.github.io) 
 
-You need to have Node.js (5.X.X) installed. Run `npm install` to install all dependencies.
-Then you have the following tasks available:
 
-* `npm run test`: Lint the JavaScript files
-* `npm run compile`: Compile the JavaScript and CSS files
-* `npm run assets`: Copy the assets (images and fonts) to this project
-* `npm run webpack`: Compile the JavaScript files
-* `npm run webpack-watch`: Watch the JavaScript files and compile on every change
-* `npm run less`: Compile the CSS files
+## Deutsche Version
+
+## Vorraussetzungen
+```
+node.js >= 4.0
+```
+
+## Anwendung starten
+
+```
+npm install
+npm run compile
+npm run server
+```
+Sie finden die Anwendung unter http://localhost:9400.
+
+### Allgemeine Dokumentation
+
+Dieses Projekt ist entstanden im Rahmen einer Evaluation der Architekturen Single Page Application (SPA) und rest oriented client architecture (ROCA). Weitere Informationen befinden sich [hier] (http://lvm-it.github.io)
