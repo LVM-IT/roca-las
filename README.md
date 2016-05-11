@@ -22,12 +22,12 @@ This repository was created as part of the evaluation project "single page appli
 
 ## Deutsche Version
 
-## Vorraussetzungen
+### Vorraussetzungen
 ```
 node.js >= 4.0
 ```
 
-## Anwendung starten
+### Anwendung starten
 
 ```
 npm install
