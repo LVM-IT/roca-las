@@ -1,5 +1,7 @@
 # RoCA LAS ROCA
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/LVM-IT/roca-las.svg)](https://greenkeeper.io/)
+
 ## Prerequisites
 ```
 node.js >= 4.0
