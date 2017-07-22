@@ -36,7 +36,7 @@
     "passport": "^0.3.2",
     "passport-http": "^0.3.0",
     "select2": "^4.0.2",
-    "simplete": "innoq/simplete#response_result_filter"
+    "simplete": "innoq/simplete.obsolete#response_result_filter"
   },
   "devDependencies": {
     "babel-core": "^6.5.2",
